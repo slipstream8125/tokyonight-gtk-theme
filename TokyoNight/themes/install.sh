@@ -17,7 +17,8 @@ window=
 if [ "$UID" -eq "$ROOT_UID" ]; then
 	DEST_DIR="/usr/share/themes"
 else
-	DEST_DIR="$HOME/.themes"
+	DEST_DIR="/usr/share/themes"
+        sudo mkdir -p $DEST_DIR 2>/dev/null
 fi
 
 SASSC_OPT="-M -t expanded"
@@ -533,7 +534,7 @@ theme_tweaks() {
 }
 
 uninstall_link() {
-	rm -rf "${HOME}/.config/gtk-4.0/"{assets,windows-assets,gtk.css,gtk-dark.css}
+	sudo rm -rf "/usr/share/themes/tokyonight-gtk-theme-Dark/gtk-4.0/"{assets,windows-assets,gtk.css,gtk-dark.css} 2>/dev/null
 }
 
 link_libadwaita() {
@@ -546,14 +547,14 @@ link_libadwaita() {
 
 	local THEME_DIR="${1}/${2}${3}${4}${5}${6}"
 
-	rm -rf "${HOME}/.config/gtk-4.0/"{assets,gtk.css,gtk-dark.css}
+	sudo rm -rf "/etc/skel/.config/gtk-4.0/"{assets,gtk.css,gtk-dark.css} 2>/dev/null
 
-	echo -e "\nLink '$THEME_DIR/gtk-4.0' to '${HOME}/.config/gtk-4.0' for libadwaita..."
+	echo -e "\nLink '$THEME_DIR/gtk-4.0' to '/etc/skel/.config/gtk-4.0' for libadwaita..."
 
-	mkdir -p "${HOME}/.config/gtk-4.0"
-	cp -rf "${THEME_DIR}/gtk-4.0/assets" "${HOME}/.config/gtk-4.0/assets"
-	cp -rf "${THEME_DIR}/gtk-4.0/gtk.css" "${HOME}/.config/gtk-4.0/gtk.css"
-	cp -rf "${THEME_DIR}/gtk-4.0/gtk-dark.css" "${HOME}/.config/gtk-4.0/gtk-dark.css"
+	sudo mkdir -p "/etc/skel/.config/gtk-4.0" 2>/dev/null
+	sudo cp -raf "${THEME_DIR}/gtk-4.0/assets" "/etc/skel/.config/gtk-4.0/assets" 2>/dev/null
+	sudo cp -raf "${THEME_DIR}/gtk-4.0/gtk.css" "/etc/skel/.config/gtk-4.0/gtk.css" 2>/dev/null
+	sudo cp -raf "${THEME_DIR}/gtk-4.0/gtk-dark.css" "/etc/skel/.config/gtk-4.0/gtk-dark.css" 2>/dev/null
 }
 
 link_theme() {
@@ -577,7 +578,7 @@ install_theme() {
 	done
 
 	if has_command xfce4-popup-whiskermen; then
-		sed -i "s|.*menu-opacity=.*|menu-opacity=0|" "$HOME/.config/xfce4/panel/whiskermenu"*".rc"
+		sudo sed -i "s|.*menu-opacity=.*|menu-opacity=0|" "/etc/skel/.config/xfce4/panel/whiskermenu"*".rc" 2>/dev/null
 	fi
 
 	if (pgrep xfce4-session &>/dev/null); then
@@ -613,7 +614,7 @@ uninstall_theme() {
 
 if [[ "$uninstall" == 'true' ]]; then
 	if [[ "$libadwaita" == 'true' ]]; then
-		echo -e "\nUninstall ${HOME}/.config/gtk-4.0 links ..."
+		echo -e "\nUninstall /etc/skel/.config/gtk-4.0 links ..."
 		uninstall_link
 	else
 		echo && uninstall_theme && uninstall_link

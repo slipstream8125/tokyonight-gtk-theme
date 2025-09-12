@@ -5,7 +5,7 @@ pkgver=1.0
 pkgrel=1
 pkgdesc="A GTK theme based on the Tokyo Night colour palette"
 arch=("any")
-url="https://github.com/Fausto-Korpsvart/${_reponame}"
+url="https://github.com/StratOS-Linux/${_reponame}"
 license=("GPL3")
 depends=("gnome-themes-extra")
 optdepends=("gtk-engine-murrine: for GTK2/Murrine engine support")
@@ -16,7 +16,10 @@ source=()
 
 # Customisation variables
 accent_variants=("default")
-color_variants=("dark" "light")
+color_variants=(
+    "dark"
+    # "light"
+)
 size_variant="standard"
 tweaks_list=(
     #"black" 

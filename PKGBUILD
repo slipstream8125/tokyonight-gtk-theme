@@ -32,7 +32,7 @@ theme_name="$pkgname"
 # install=tn.install
 
 prepare() {
-  cp -r $startdir/TokyoNight $srcdir/
+  cp -ra $startdir/TokyoNight $srcdir/
   cp $startdir/LICENSE $srcdir/
   cp $startdir/README.md $srcdir/
 }
@@ -81,9 +81,12 @@ package() {
   # Ensure we handle the case where icons/ may have non‑theme files
   for icondir in icons/*; do
     if [ -d "${icondir}" ]; then
-      cp -r "${icondir}" "${icon_dest}/"
+      cp -ra "${icondir}" "${icon_dest}/"
     fi
   done
+  # Copy manually
+  install -Dm "${pkgdir}/etc/skel/.icons/"
+  cp -ra "${srcdir}/TokyoNight/icons/Tokyonight-{Dark,Moon}" "${pkgdir}/etc/skel/.icons/"
 }
 
 # vim:set ts=2 sw=2 et:

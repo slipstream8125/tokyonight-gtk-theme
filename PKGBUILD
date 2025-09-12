@@ -1,7 +1,7 @@
 # Maintainer: Slipstream8125 <slipstream8125@proton.me>
 
 pkgname="tokyonight-gtk-theme"
-pkgver=r91.98bd5965
+pkgver=r97.feeffd68
 pkgrel=1
 pkgdesc="A GTK theme based on the Tokyo Night colour palette"
 arch=("any")
@@ -9,17 +9,28 @@ url="https://github.com/Fausto-Korpsvart/${_reponame}"
 license=("GPL3")
 depends=("gnome-themes-extra")
 optdepends=("gtk-engine-murrine: for GTK2/Murrine engine support")
-makedepends=("git" "sassc")
+makedepends=("git" "rsync" "sassc")
 # source=("git+${url}.git#branch=master")
 source=()
 # sha256sums=('SKIP')  # using git source; if using a stable release, replace with real sum
 
 # Customisation variables
-accent_variants=("all")
+accent_variants=("default")
 color_variants=("dark" "light")
 size_variant="standard"
-tweaks_list=("black" "float" "outline")
+tweaks_list=(
+    #"black" 
+    "macos"
+    # "float"
+    #"outline"
+)
 theme_name="$pkgname"
+
+# install=tn.install
+
+prepare() {
+  cp -r $startdir/TokyoNight $srcdir/
+}
 
 pkgver() {
   cd "${srcdir}"
@@ -27,11 +38,9 @@ pkgver() {
 }
 
 package() {
-  cd "${srcdir}"
-
   # Documentation & license
-  install -D -m 0644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -D -m 0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -D -m 0644 "${srcdir}/TokyoNight/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -D -m 0644 "${srcdir}/TokyoNight/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   # Themes: use upstream install.sh
   theme_dest="${pkgdir}/usr/share/themes"
@@ -53,6 +62,7 @@ package() {
   fi
 
   # Call install.sh with correct flags
+  cd "${srcdir}/TokyoNight/themes/"
   ./install.sh \
     --dest "${theme_dest}" \
     --name "${theme_name}" \

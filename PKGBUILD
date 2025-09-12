@@ -30,6 +30,8 @@ theme_name="$pkgname"
 
 prepare() {
   cp -r $startdir/TokyoNight $srcdir/
+  cp $startdir/LICENSE $srcdir/
+  cp $startdir/README.md $srcdir/
 }
 
 pkgver() {
@@ -39,8 +41,8 @@ pkgver() {
 
 package() {
   # Documentation & license
-  install -D -m 0644 "${srcdir}/TokyoNight/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -D -m 0644 "${srcdir}/TokyoNight/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -D -m 0644 "${srcdir}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -D -m 0644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   # Themes: use upstream install.sh
   theme_dest="${pkgdir}/usr/share/themes"

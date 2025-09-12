@@ -547,14 +547,14 @@ link_libadwaita() {
 
 	local THEME_DIR="${1}/${2}${3}${4}${5}${6}"
 
-	sudo rm -rf "/etc/skel/.config/gtk-4.0/"{assets,gtk.css,gtk-dark.css} 2>/dev/null
+	sudo rm -rf "/usr/share/gtk-4.0/"{assets,gtk.css,gtk-dark.css} 2>/dev/null
 
-	echo -e "\nLink '$THEME_DIR/gtk-4.0' to '/etc/skel/.config/gtk-4.0' for libadwaita..."
+	echo -e "\nLink '$THEME_DIR/gtk-4.0' to '/usr/share/gtk-4.0/' for libadwaita..."
 
-	sudo mkdir -p "/etc/skel/.config/gtk-4.0" 2>/dev/null
-	sudo cp -raf "${THEME_DIR}/gtk-4.0/assets" "/etc/skel/.config/gtk-4.0/assets" 2>/dev/null
-	sudo cp -raf "${THEME_DIR}/gtk-4.0/gtk.css" "/etc/skel/.config/gtk-4.0/gtk.css" 2>/dev/null
-	sudo cp -raf "${THEME_DIR}/gtk-4.0/gtk-dark.css" "/etc/skel/.config/gtk-4.0/gtk-dark.css" 2>/dev/null
+	sudo mkdir -p "/usr/share/gtk-4.0" 2>/dev/null
+	sudo cp -raf "${THEME_DIR}/gtk-4.0/assets" "/usr/share/gtk-4.0/assets" 2>/dev/null
+	sudo cp -raf "${THEME_DIR}/gtk-4.0/gtk.css" "/usr/share/gtk-4.0/gtk.css" 2>/dev/null
+	sudo cp -raf "${THEME_DIR}/gtk-4.0/gtk-dark.css" "/usr/share/gtk-4.0/gtk-dark.css" 2>/dev/null
 }
 
 link_theme() {
@@ -614,7 +614,7 @@ uninstall_theme() {
 
 if [[ "$uninstall" == 'true' ]]; then
 	if [[ "$libadwaita" == 'true' ]]; then
-		echo -e "\nUninstall /etc/skel/.config/gtk-4.0 links ..."
+		echo -e "\nUninstall /usr/share/gtk-4.0 links ..."
 		uninstall_link
 	else
 		echo && uninstall_theme && uninstall_link

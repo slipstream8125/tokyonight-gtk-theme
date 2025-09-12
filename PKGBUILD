@@ -1,7 +1,7 @@
 # Maintainer: Slipstream8125 <slipstream8125@proton.me>
 
 pkgname="tokyonight-gtk-theme"
-pkgver=r97.feeffd68
+pkgver=1.0
 pkgrel=1
 pkgdesc="A GTK theme based on the Tokyo Night colour palette"
 arch=("any")
@@ -9,7 +9,7 @@ url="https://github.com/Fausto-Korpsvart/${_reponame}"
 license=("GPL3")
 depends=("gnome-themes-extra")
 optdepends=("gtk-engine-murrine: for GTK2/Murrine engine support")
-makedepends=("git" "rsync" "sassc")
+makedepends=("git" "sassc")
 # source=("git+${url}.git#branch=master")
 source=()
 # sha256sums=('SKIP')  # using git source; if using a stable release, replace with real sum

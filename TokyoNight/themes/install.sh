@@ -127,9 +127,9 @@ install() {
 	cp -r "${SRC_DIR}/assets/gnome-shell/theme${theme}${ctype}/"*.svg 					 "${THEME_DIR}/gnome-shell/assets"
 
 	cd "${THEME_DIR}/gnome-shell"
-	ln -s assets/no-events.svg no-events.svg
-	ln -s assets/process-working.svg process-working.svg
-	ln -s assets/no-notifications.svg no-notifications.svg
+	cp -rf assets/no-events.svg no-events.svg
+	cp -rf assets/process-working.svg process-working.svg
+	cp -rf assets/no-notifications.svg no-notifications.svg
 
 	# GTK2 Themes
 	mkdir -p                                                                      		 "${THEME_DIR}/gtk-2.0"
@@ -140,7 +140,7 @@ install() {
 
 	# GTK3 Themes
 	mkdir -p                                                                             "${THEME_DIR}/gtk-3.0"
-    cp -r "${SRC_DIR}/assets/gtk/assets${theme}${ctype}"                                 "${THEME_DIR}/gtk-3.0/assets"
+	cp -r "${SRC_DIR}/assets/gtk/assets${theme}${ctype}"                                 "${THEME_DIR}/gtk-3.0/assets"
 	cp -r "${SRC_DIR}/assets/gtk/scalable"                                               "${THEME_DIR}/gtk-3.0/assets"
 	cp -r "${SRC_DIR}/assets/gtk/thumbnails/thumbnail${theme}${ctype}${ELSE_DARK:-}.png" "${THEME_DIR}/gtk-3.0/thumbnail.png"
 	sassc $SASSC_OPT "${SRC_DIR}/main/gtk-3.0/gtk${color}.scss"                          "${THEME_DIR}/gtk-3.0/gtk.css"
@@ -551,9 +551,9 @@ link_libadwaita() {
 	echo -e "\nLink '$THEME_DIR/gtk-4.0' to '${HOME}/.config/gtk-4.0' for libadwaita..."
 
 	mkdir -p "${HOME}/.config/gtk-4.0"
-	ln -sf "${THEME_DIR}/gtk-4.0/assets" "${HOME}/.config/gtk-4.0/assets"
-	ln -sf "${THEME_DIR}/gtk-4.0/gtk.css" "${HOME}/.config/gtk-4.0/gtk.css"
-	ln -sf "${THEME_DIR}/gtk-4.0/gtk-dark.css" "${HOME}/.config/gtk-4.0/gtk-dark.css"
+	cp -rf "${THEME_DIR}/gtk-4.0/assets" "${HOME}/.config/gtk-4.0/assets"
+	cp -rf "${THEME_DIR}/gtk-4.0/gtk.css" "${HOME}/.config/gtk-4.0/gtk.css"
+	cp -rf "${THEME_DIR}/gtk-4.0/gtk-dark.css" "${HOME}/.config/gtk-4.0/gtk-dark.css"
 }
 
 link_theme() {

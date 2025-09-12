@@ -1,7 +1,6 @@
 # Maintainer: Slipstream8125 <slipstream8125@proton.me>
 
 pkgname="tokyonight-gtk-theme"
-_reponame="Tokyonight-GTK-Theme"
 pkgver=r91.98bd5965
 pkgrel=1
 pkgdesc="A GTK theme based on the Tokyo Night colour palette"
@@ -13,7 +12,7 @@ optdepends=("gtk-engine-murrine: for GTK2/Murrine engine support")
 makedepends=("git" "sassc")
 # source=("git+${url}.git#branch=master")
 source=()
-sha256sums=('SKIP')  # using git source; if using a stable release, replace with real sum
+# sha256sums=('SKIP')  # using git source; if using a stable release, replace with real sum
 
 # Customisation variables
 accent_variants=("all")
@@ -23,17 +22,12 @@ tweaks_list=("black" "float" "outline")
 theme_name="$pkgname"
 
 pkgver() {
-  cd "${srcdir}" #/${_reponame}"
+  cd "${srcdir}"
   echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  cd "${srcdir}" #/${_reponame}"
-  # no extra steps needed
-}
-
 package() {
-  cd "${srcdir}" #/${_reponame}"
+  cd "${srcdir}"
 
   # Documentation & license
   install -D -m 0644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"

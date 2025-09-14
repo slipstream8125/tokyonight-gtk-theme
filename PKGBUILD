@@ -1,7 +1,7 @@
 # Maintainer: Slipstream8125 <slipstream8125@proton.me>
 
 pkgname="tokyonight-gtk-theme"
-pkgver=r102.5ae6f10f
+pkgver=r105.12cbfba1
 pkgrel=1
 pkgdesc="A GTK theme based on the Tokyo Night colour palette"
 arch=("any")

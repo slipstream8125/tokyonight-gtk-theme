@@ -1,7 +1,7 @@
 # Maintainer: Slipstream8125 <slipstream8125@proton.me>
 
 pkgname="tokyonight-gtk-theme"
-pkgver=r105.12cbfba1
+pkgver=r106.1da19e1c
 pkgrel=1
 pkgdesc="A GTK theme based on the Tokyo Night colour palette"
 arch=("any")
@@ -9,7 +9,7 @@ url="https://github.com/StratOS-Linux/${pkgname}"
 license=("GPL3")
 depends=("gnome-themes-extra")
 optdepends=("gtk-engine-murrine: for GTK2/Murrine engine support")
-makedepends=("git" "sassc")
+makedepends=("git" "sassc" "gnome-shell")
 options=(!strip !debug)
 # source=("git+${url}.git#branch=master")
 source=()

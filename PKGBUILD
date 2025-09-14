@@ -2,7 +2,7 @@
 
 pkgname="tokyonight-gtk-theme"
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A GTK theme based on the Tokyo Night colour palette"
 arch=("any")
 url="https://github.com/StratOS-Linux/${pkgname}"

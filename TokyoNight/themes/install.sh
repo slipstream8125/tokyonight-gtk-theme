@@ -29,7 +29,7 @@ COLOR_VARIANTS=('-Light' '-Dark')
 SIZE_VARIANTS=('' '-Compact')
 
 if [[ "$(command -v gnome-shell)" ]]; then
-    echo && gnome-shell --version && echo
+    # echo && gnome-shell --version && echo
     SHELL_VERSION="$(gnome-shell --version | cut -d ' ' -f 3 | cut -d . -f -1)"
     if [[ "${SHELL_VERSION:-}" -ge "48" ]]; then
 	GS_VERSION="48-0"
@@ -330,34 +330,34 @@ while [[ $# -gt 0 ]]; do
 		    storm)
 			storm="true"
 			ctype="-Storm"
-			echo -e "Storm ColorScheme version! ..."
+			# echo -e "Storm ColorScheme version! ..."
 			shift
 			;;
 		    moon)
 			moon="true"
 			ctype="-Moon"
-			echo -e "Moon ColorScheme version! ..."
+			# echo -e "Moon ColorScheme version! ..."
 			shift
 			;;
 		    black)
 			blackness="true"
-			echo -e "Blackness version! ..."
+			# echo -e "Blackness version! ..."
 			shift
 			;;
 		    float)
 			float="true"
-			echo -e "Install Floating Gnome-Shell Panel version! ..."
+			# echo -e "Install Floating Gnome-Shell Panel version! ..."
 			shift
 			;;
 		    outline)
 			outline="true"
-			echo -e "Install 2px windows outline version! ..."
+			# echo -e "Install 2px windows outline version! ..."
 			shift
 			;;
 		    macos)
 			macos="true"
 			window="-Macos"
-			echo -e "Macos window button version! ..."
+			# echo -e "Macos window button version! ..."
 			shift
 			;;
 		    -*)
@@ -549,7 +549,7 @@ link_libadwaita() {
 
     rm -rf "$pkgdir/etc/skel/.config/gtk-4.0/"{assets,gtk.css,gtk-dark.css} 2>/dev/null
 
-    echo -e "\nCopy '$THEME_DIR/gtk-4.0' to '/etc/skel/.config/gtk-4.0/' for libadwaita..."
+    # echo -e "\nCopy '$THEME_DIR/gtk-4.0' to '/etc/skel/.config/gtk-4.0/' for libadwaita..."
 
     mkdir -p "$pkgdir/etc/skel/.config/gtk-4.0" 2>/dev/null
     cp -raf "${THEME_DIR}/gtk-4.0/assets" "$pkgdir/etc/skel/.config/gtk-4.0/assets" 2>/dev/null

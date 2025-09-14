@@ -2,4 +2,7 @@ post_install() {
   echo "==> GTK theme has been installed to /etc/skel/.config/gtk*"
   echo "==> Icons have been installed to /etc/skel/.icons/"
   echo "==> To use this, run /usr/local/bin/StratOS-configure-gnome"
+  ln -s /usr/share/themes/Tokyonight-Dark/gtk-4.0/gtk.css ~/.config/gtk-4.0/gtk.css
+  ln -s /usr/share/themes/Tokyonight-Dark/gtk-4.0/gtk-dark.css ~/.config/gtk-4.0/gtk-dark.css
+  flatpak override --user --filesystem=xdg-config/gtk-4.0
 }

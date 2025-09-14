@@ -1,7 +1,7 @@
 # Maintainer: Slipstream8125 <slipstream8125@proton.me>
 
 pkgname="tokyonight-gtk-theme"
-pkgver=r106.1da19e1c
+pkgver=1.0
 pkgrel=1
 pkgdesc="A GTK theme based on the Tokyo Night colour palette"
 arch=("any")
@@ -37,10 +37,10 @@ prepare() {
   cp $startdir/README.md $srcdir/
 }
 
-pkgver() {
-  cd "${srcdir}"
-  echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
-}
+# pkgver() {
+#   cd "${srcdir}"
+#   echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+# }
 
 package() {
   # Documentation & license
